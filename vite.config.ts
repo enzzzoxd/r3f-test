@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true, // Permite que o servidor seja acessível externamente
+    cors: true,
     hmr: {
       clientPort: 443 // Porta para o Hot Module Replacement em ambientes como o CodeSandbox
     },
