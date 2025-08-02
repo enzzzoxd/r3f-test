@@ -1,2 +1,9 @@
+/assets/*
+  Access-Control-Allow-Origin: https://t3-financial-crime-unit-2-98db06354519e.webflow.io
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: *
+
 /*
-Acess-Control-Allow-Origin: https://t3-financial-crime-unit-2-98db06354519e.webflow.io
+  Access-Control-Allow-Origin: https://t3-financial-crime-unit-2-98db06354519e.webflow.io
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: *

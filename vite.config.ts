@@ -16,8 +16,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        format: 'iife', // Força formato que executa automaticamente
-        name: 'MyApp'
+        format: 'iife',
+        name: 'MyApp',
+        inlineDynamicImports: true // IMPORTANTE!
       }
     }
   }

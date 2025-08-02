@@ -22,7 +22,7 @@ function GlassPortal() {
   const ref0 = useRef()
   const ref1 = useRef()
   const material = useRef()
-  const normalMap = useTexture('dirt1.png')
+  const normalMap = useTexture('/dirt1.png')
   normalMap.wrapS = normalMap.wrapT = 1000
 
   useFrame((state) => {
@@ -44,7 +44,7 @@ function GlassPortal() {
           rotation={[0, rotation.value, 0]}
           position={[0, -0.4, 0.2]}
           // https://www.youtube.com/watch?v=W7G7HqWbgdo
-          src="maty.splat"
+          src="/maty.splat"
         />
         <DepthBG />
       </group>
