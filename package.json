@@ -1,15 +1,34 @@
 {
+  "name": "basic-demo",
+  "version": "1.0.0",
+  "description": "Shows how to form self-contained components with their own state and user interaction.",
+  "keywords": [
+    "interaction",
+    "pointer-events"
+  ],
+  "main": "src/index.js",
   "dependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "@react-three/drei": "latest",
+    "@react-three/fiber": "latest",
+    "@types/three": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "three": "latest",
+    "leva": "latest"
   },
   "devDependencies": {
-    "serve": "14.2.4",
-    "@types/react": "19.0.0",
-    "@types/react-dom": "19.0.0",
-    "typescript": "5.7.2",
-    "parcel-bundler": "1.12.5",
-    "vite": "^6.0.0",
+    "vite": "^5.0.11",
     "@vitejs/plugin-react": "^4.2.1"
-  }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
