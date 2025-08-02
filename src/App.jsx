@@ -1,19 +1,11 @@
-import { Canvas } from "@react-three/fiber";
-import {
-  Environment,
-  MeshTransmissionMaterial,
-  RoundedBox,
-  useTexture,
-  useFBO,
-  CameraControls,
-  shaderMaterial
-} from "@react-three/drei";
-import { Splat } from "./splat";
-import { useFrame,extend } from "@react-three/fiber";
-import { useRef } from "react";
+import { Canvas } from '@react-three/fiber'
+import { Environment, MeshTransmissionMaterial, RoundedBox, useTexture, useFBO, CameraControls, shaderMaterial } from '@react-three/drei'
+import { Splat } from './splat'
+import { useFrame, extend } from '@react-three/fiber'
+import { useRef } from 'react'
 import * as THREE from 'three'
 
-// import {useControls} from 'leva'// problematic 
+// import {useControls} from 'leva'// problematic
 
 function GlassPortal() {
   const { roughness, transmission, rotation, showOriginal, color } =
@@ -23,45 +15,40 @@ function GlassPortal() {
       transmission: { value: 1, min: 0, max: 1 },
       rotation: { value: 1.4 * Math.PI, min: 0, max: 2 * Math.PI },
       showOriginal: { value: false },
-      color: { value: "#fff" },
-    };
-  const buffer = useFBO();
-  const ref = useRef();
-  const ref0= useRef();
-  const ref1 = useRef();
-  const material = useRef();
-  const normalMap = useTexture("dirt1.png");
-  normalMap.wrapS = normalMap.wrapT = 1000;
+      color: { value: '#fff' }
+    }
+  const buffer = useFBO()
+  const ref = useRef()
+  const ref0 = useRef()
+  const ref1 = useRef()
+  const material = useRef()
+  const normalMap = useTexture('dirt1.png')
+  normalMap.wrapS = normalMap.wrapT = 1000
 
   useFrame((state) => {
-    ref0.current.visible = true;
-    ref1.current.visible = false;
-    state.gl.setRenderTarget(buffer);
-    state.gl.render(state.scene, state.camera);
-    state.gl.setRenderTarget(null);
-    ref0.current.visible = showOriginal.value;
-    ref1.current.visible = true;
-  });
+    ref0.current.visible = true
+    ref1.current.visible = false
+    state.gl.setRenderTarget(buffer)
+    state.gl.render(state.scene, state.camera)
+    state.gl.setRenderTarget(null)
+    ref0.current.visible = showOriginal.value
+    ref1.current.visible = true
+  })
 
   return (
     <>
-    <group ref={ref0}>
-      <Splat
-        ref={ref}
-        scale={1.4}
+      <group ref={ref0}>
+        <Splat
+          ref={ref}
+          scale={1.4}
           rotation={[0, rotation.value, 0]}
           position={[0, -0.4, 0.2]}
-        // https://www.youtube.com/watch?v=W7G7HqWbgdo
-        src="maty.splat"
-      />
-      <DepthBG />
+          // https://www.youtube.com/watch?v=W7G7HqWbgdo
+          src="maty.splat"
+        />
+        <DepthBG />
       </group>
-      <RoundedBox
-        ref={ref1}
-        position={[0, 0, 0.8]}
-        args={[1.5, 2, 0.12]}
-        radius={0.03}
-      >
+      <RoundedBox ref={ref1} position={[0, 0, 0.8]} args={[1.5, 2, 0.12]} radius={0.03}>
         <MeshTransmissionMaterial
           ref={material}
           transmission={transmission.value}
@@ -74,12 +61,12 @@ function GlassPortal() {
         />
       </RoundedBox>
     </>
-  );
+  )
 }
 
 function DepthBG() {
   const StripeMaterial = shaderMaterial(
-    {  },
+    {},
     // vertex shader
     /*glsl*/ `
       varying vec2 vUv;
@@ -102,23 +89,24 @@ function DepthBG() {
         gl_FragColor.rgba = vec4(fadeOut*0.2*vec3(stripes), 1.0);
       }
     `
-  );
+  )
 
-  extend({ StripeMaterial });
+  extend({ StripeMaterial })
 
   return (
     <mesh>
       <boxGeometry position={[0, 0, 0.8]} args={[1.5, 2, 1.5]} />
       <stripeMaterial color="hotpink" time={1} side={THREE.BackSide} />
     </mesh>
-  );
+  )
 }
 
 export default function App() {
+  console.log('CÓDIGO RODANDO...')
   return (
     <>
       <Canvas camera={{ position: [0, 0, 3], fov: 75 }}>
-        <color attach="background" args={["#111111"]} />
+        <color attach="background" args={['#111111']} />
         <Environment preset="warehouse" />
         {/* <Environment files="Default.exr" /> */}
         {/* <Environment  near={1} far={1000} resolution={256}>
@@ -131,5 +119,5 @@ export default function App() {
         <CameraControls />
       </Canvas>
     </>
-  );
+  )
 }

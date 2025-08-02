@@ -12,5 +12,13 @@ export default defineConfig({
     },
     // Adicione a seguinte linha para permitir o host específico
     allowedHosts: ['632wnr-5173.csb.app', 'https://t3-financial-crime-unit-2-98db06354519e.webflow.io']
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        format: 'iife', // Força formato que executa automaticamente
+        name: 'MyApp'
+      }
+    }
   }
 })
